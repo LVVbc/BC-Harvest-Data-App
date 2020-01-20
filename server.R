@@ -21,12 +21,12 @@ smoothFunction <- function(x){
 # setwd("Z:/ES/WILDLIFE 2016-2020/Harvest management/Harvest data/Data Code/Shiny App")
 database <- readRDS("HarvestData2018.rds")
 
-subrlist <- list()
-westkoots <- c(407,408,409,414,415,416,417,418,419,427,428,429,430,431,432,433,438,439)
-eastkoots <- c(401,402,403,404,405,406,420,421,422,423,424,425,426,434,435,436,437,440)
-subrlist[[1]] <- westkoots
-subrlist[[2]] <- eastkoots
-subr <- c("West Kootenays", "East Kootenays")
+# subrlist <- list()
+# westkoots <- c(407,408,409,414,415,416,417,418,419,427,428,429,430,431,432,433,438,439)
+# eastkoots <- c(401,402,403,404,405,406,420,421,422,423,424,425,426,434,435,436,437,440)
+# subrlist[[1]] <- westkoots
+# subrlist[[2]] <- eastkoots
+# subr <- c("West Kootenays", "East Kootenays")
 
 #### SERVER ####
 server <- function(input, output){
@@ -41,9 +41,9 @@ server <- function(input, output){
     if("All Species" %in% species) species <- specieslist
     if(input$unitsInput == "") units <- NULL
     
-    if(input$subregionInput != ""){
-      units <- subrlist[[which(subr == input$subregionInput)]]
-    }
+    # if(input$subregionInput != ""){
+    #   units <- subrlist[[which(subr == input$subregionInput)]]
+    # }
     if(input$unitsInput != ""){
       units <- input$unitsInput
     }
@@ -56,9 +56,9 @@ server <- function(input, output){
     }
     if(!is.null(units)) region <- NULL
     arealabel <- input$labelInput
-    if(input$subregionInput != "" & input$unitsInput == ""){
-      arealabel <- paste("the", input$subregionInput, sep = " ")
-    }
+    # if(input$subregionInput != "" & input$unitsInput == ""){
+    #   arealabel <- paste("the", input$subregionInput, sep = " ")
+    # }
     if(arealabel == "") arealabel <- NULL
     smooth <- input$smoothInput
     years <- input$yearsInput[1]:input$yearsInput[2]
